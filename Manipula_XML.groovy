@@ -29,51 +29,7 @@ def Message processData(Message message) {
     
     LinkedHashMap<String, NodeList> records = new LinkedHashMap<String, NodeList>();
     
-    for(Node cust_main : cust_main_list) {
-        
-        String curr_external_code = cust_main.externalCode.text();
-        
-        if(!records[curr_external_code]) {
-            
-            records[curr_external_code] = new NodeList();
-            
-            Node cust_employee_id  = new Node(null, "cust_employeeId", cust_main.cust_employeeId.text());
-            Node cust_periodo      = new Node(null, "cust_periodo", cust_main.cust_periodo.text());
-            Node cust_ponto_parent = new Node(null, "cust_toEspelhoPontoDetail");
-            
-            records[curr_external_code].add(cust_employee_id);
-            records[curr_external_code].add(cust_periodo);
-            records[curr_external_code].add(cust_ponto_parent);
-            
-        }
-        
-        NodeList cust_ponto_child_list = cust_main.cust_toEspelhoPontoDetail.cust_espellho_ponto_detail;
-        
-        for(Node cust_ponto_child : cust_ponto_child_list)
-            records[curr_external_code][2].append(cust_ponto_child);
-        
-    }
-    
-    Node new_root    = new Node(null, "cust_espelho_ponto_main");
-    
-    Set<String> keys = records.keySet();
-    
-    for(String key : keys) {
-        
-        Node new_cust_ponto_main   = new_root.appendNode("cust_espelho_ponto_main");
-        
-        new_cust_ponto_main.appendNode("externalCode"   , key);
-        new_cust_ponto_main.appendNode("cust_employeeId", records[key][0].text());
-        new_cust_ponto_main.appendNode("cust_periodo"   , records[key][1].text());
-        
-        Node new_cust_ponto_parent = new_cust_ponto_main.appendNode("cust_toEspelhoPontoDetail");
-        
-        List<Node> cust_ponto_child_list = records[key][2].children();
-        
-        for(Node cust_ponto_child : cust_ponto_child_list)
-            new_cust_ponto_parent.append(cust_ponto_child);
-        
-    }
+
     
     message.setBody(XmlUtil.serialize(new_root));
     
