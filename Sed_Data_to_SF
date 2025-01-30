@@ -1,0 +1,23 @@
+{
+  "__metadata": {
+    "uri": "cust_risco",
+    "type": "SFOData.cust_risco"
+  },
+  "effectiveStartDate": "/Date(${property.p_efetiveStartDate})/",
+  "externalCode": "${property.p_code}",
+  "cust_cpf": "${property.p_cpf}",
+  "cust_dtNasc": "/Date(${property.p_date_birth})/",
+  "cust_dtNascPant": "/Date(${property.p_date_birth})/",
+  "cust_falsoPositivo": "${header.h_fake}",
+  "cust_lclNasc": "${header.h_local_sf}",
+  "cust_lclNascPant": "${property.p_local_pantheon}",
+  "cust_msgPant": "",
+  "cust_nomePant": "${property.p_name_pantheon}",
+  "cust_ofac": "${property.p_ofac}",
+  "cust_pep": "${property.p_pep}",
+  "cust_riscoPessoa": "${property.p_risco_pessoa}",
+  "cust_riscoPosicao": "1",
+  "externalName": "${property.p_name}"
+}
+
+https://api19preview.sapsf.com/odata/v2/upsert?format=json
