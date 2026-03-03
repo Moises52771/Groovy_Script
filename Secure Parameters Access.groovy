@@ -1,3 +1,8 @@
+import com.sap.gateway.ip.core.customdev.util.Message
+import com.sap.it.api.ITApiFactory
+import com.sap.it.api.securestore.SecureStoreService
+import com.sap.it.api.securestore.AccessTokenAndUser
+
 def Message processData(Message message) {
     def apikey_alias = message.getProperty("ApiKeyAlias")
     def secureStorageService =  ITApiFactory.getService(SecureStoreService.class, null)
